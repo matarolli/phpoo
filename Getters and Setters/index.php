@@ -11,6 +11,7 @@ class Login
 
     public function setEmail()
     {
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
         $this->email = $email;
     }
 
@@ -36,7 +37,7 @@ class Login
 
 $login = new Login();
 
-$login->setEmail("testemail@mail.com");
+$login->setEmail("testemail()/@mail.com");
 $login->setSenha("123456");
 
 $login->Logar();

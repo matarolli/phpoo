@@ -2,28 +2,40 @@ version: '3.8'
 
 services:
   web:
-    image: php:8.1-apache
-    container_name: phpoo-web
+    build: .
+    container_name: mvc-web
     ports:
       - "8080:80"
     volumes:
-      - ./phpoo:/var/www/html
+      - ./MVC:/var/www/html
     depends_on:
       - db
 
   db:
     image: mysql:8.0
-    container_name: phpoo-db
+    container_name: mvc-db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: phpoodb
-      MYSQL_USER: phpuser
-      MYSQL_PASSWORD: phppassword
+      MYSQL_DATABASE: mvcdb
+      MYSQL_USER: mvcuser
+      MYSQL_PASSWORD: mvcpassword
     ports:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: mvc-phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mvc-db
+      MYSQL_ROOT_PASSWORD: rootpassword
+    depends_on:
+      - db
 
 volumes:
   db_data:

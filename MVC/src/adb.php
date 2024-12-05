@@ -1,8 +1,8 @@
 <?php
 // Configuração do banco de dados
-$host = 'mvcdb';
-$username = 'root';
-$password = ''; // Modifique se necessário
+$host = 'mvc-db';
+$username = 'mvcuser';
+$password = 'mvcpassword'; // Modifique se necessário
 $database = 'mvcdb';
 
 // Conexão com o banco de dados

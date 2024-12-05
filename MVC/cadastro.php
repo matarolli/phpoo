@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <a href="index.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
             <a href="usuarios.php">Usuários</a>
+            <a href="admin-usuarios.php">Administração</a>
         </nav>
     </header>
 
